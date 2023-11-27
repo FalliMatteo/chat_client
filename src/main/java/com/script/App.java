@@ -28,10 +28,16 @@ public class App
             ClientThread thread = new ClientThread(socket);
             thread.start();
             System.out.println("\nConnection established");
+            System.out.println("\nInsert your username");
             do{
                 message = scanner.nextLine();
-                output.writeBytes(message);
-            }while(message.equals("@exit"));
+                if(message.isEmpty()){
+                    System.out.println("\nYou can't send an empty string");
+                }else{
+                    output.writeBytes(message + "\n");
+                }
+            }while(!message.equals("@exit"));
+            System.out.println("You closed the connection");
             scanner.close();
         }catch (Exception e){
             System.out.println(e.getMessage());

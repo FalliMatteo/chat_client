@@ -14,12 +14,17 @@ public class ClientThread extends Thread{
     @Override
     public void run(){
         String input;
+        boolean loop = true;
         try {
             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             do{
                 input = in.readLine();
-                System.out.println("\n" + input);
-            }while(input.equals("ඞ"));
+                if(input == null || input.isEmpty()){
+                    System.out.println("Server's error");
+                }else{
+                    System.out.println("\n" + input);
+                }
+            }while(loop);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
