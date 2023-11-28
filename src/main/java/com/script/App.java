@@ -41,8 +41,9 @@ public class App
                     output.writeBytes(message + "\n");
                 }
             }while(!message.equals("@exit"));
-            System.out.println("You closed the connection");
+            System.out.println("\nYou closed the connection");
             scanner.close();
+            System.exit(0);
         }catch (Exception e){
             System.out.println(e.getMessage());
         }
