@@ -1,6 +1,7 @@
 package com.script;
 
 import java.io.DataOutputStream;
+import java.net.ConnectException;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.Scanner;
@@ -20,6 +21,9 @@ public class App
                 try{
                     socket = new Socket(address, 3000);
                 }catch(UnknownHostException e){
+                    System.out.println("\nServer not found");
+                    kek = false;
+                }catch(ConnectException e){
                     System.out.println("\nServer not found");
                     kek = false;
                 }
